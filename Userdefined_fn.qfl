@@ -1,0 +1,55 @@
+﻿'support1........
+Function TC_01()
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Help & SupportView commonly").Click
+Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").Link("New support ticket").Click
+End Function
+'support2.........
+Function TC_02()
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").WebElement("Help & SupportView commonly").Click
+Browser("Movie Tickets, Plays,").Page("BookMyShow Customer Care").WebEdit("term").Set "How to get cashback"
+Browser("Movie Tickets, Plays,").Page("BookMyShow Customer Care").WebButton("Search").Click
+end function 
+'support3........
+Function TC_03
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Help & SupportView commonly").Click
+Browser("BookMyShow Customer Care").Page("Important Topics : BookMyShow").WebElement("Important Topics").Click
+End Function
+'support4......
+Function TC_04
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Help & SupportView commonly").Click
+searchString=Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").Link("Online Streaming 14").Click
+End Function
+'support5......
+Function TC_05()
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").Image("helpandsupport").Click
+Browser("Movie Tickets, Plays,").Page("BookMyShow Customer Care").Link("New support ticket").Click
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebEdit("helpdesk_ticket[email]").Set "test@gmail.com"
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebButton("Submit").Click
+End Function
+'support6......
+Function TC_06()
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Help & Support").Click
+Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").WebElement("Most of your booking &").Click
+Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").WebElement("BookMyShow Support Centre").Click
+Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").Link("New support ticket").Click
+End Function
+'support7......
+Function TC_07()
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").WebElement("Help & SupportView commonly_2").Click
+Browser("Movie Tickets, Plays,").Page("BookMyShow Customer Care").Link("New support ticket").Click
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").Link("Solutions").Click	
+End Function
+'support8......
+Function TC_08()
+Browser("creationtime:=0").page("micclass:=page").WebEdit("class:=span12 email required").Set "mlakshmibl1997@gmail.com"
+Browser("creationtime:=0").page("micclass:=page").WebEdit("class:=text span12 name_field").Set "Mahalakshmi"
+Browser("creationtime:=0").page("micclass:=page").WebEdit("html id:=helpdesk_ticket_custom_field_contact_number_79003").Set "9632438487"
+Browser("creationtime:=0").page("micclass:=page").WebEdit("html id:=helpdesk_ticket_subject").Set "PVR booking"
+End Function

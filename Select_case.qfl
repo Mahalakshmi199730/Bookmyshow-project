@@ -1,0 +1,43 @@
+﻿Function executeTest(Testcase_ID)
+Select Case TestCase_ID
+	Case "TC_001"
+	services.StartTransaction "TC_001"
+	Environment.Value("Result")=TC_01()
+	services.EndTransaction "TC_001"
+	
+	Case "TC_002"
+	services.StartTransaction "TC_002"
+	Environment.Value("Result")=TC_02()
+	services.EndTransaction "TC_002"
+	
+	Case "TC_003"
+	services.StartTransaction "TC_003"
+	Environment.Value("Result")=TC_03()
+	services.EndTransaction "TC_003"
+	
+	Case TC_004
+	services.StartTransaction "TC_004"
+	Environment.Value("Result")=TC_04()
+	services.EndTransaction "TC_004"
+	
+	Case TC_005
+	services.StartTransaction "TC_005"
+	Environment.Value("Result")=TC_05()
+	services.EndTransaction "TC_005"
+	
+	Case "TC_006"
+	services.StartTransaction "TC_006"
+	Environment.Value("Result")=TC_06()
+	services.EndTransaction "TC_006"
+	
+	Case "TC_007"
+	services.StartTransaction "TC_007"
+	Environment.Value("Result")=TC_07()
+	services.EndTransaction "TC_007"
+	
+	Case "TC_008"
+	services.StartTransaction "TC_008"
+	Environment.Value("Result")=TC_08()
+	services.EndTransaction "TC_008"
+End Select
+end function
