@@ -1,0 +1,12 @@
+﻿DataTable.AddSheet "bookmyshowdata"
+DataTable.ImportSheet "C:\Users\user233\Documents\Sprint2bms\Test_data\bookmyshowdata.xlsx","Bookmyshow","Action1"
+rowCount = DataTable.GetSheet("bookmyshowdata").GetRowCount
+For rows = 1 To rowCount
+	DataTable.SetCurrentRow rows
+	If DataTable.Value("Expected_value","Bookmyshow")="Y" Then
+		Environment.Value("Result")="Pass"
+		executeTest(DataTable.Value("testCaseID","Test_data"))
+	End If
+	DataTable.Value("Result","Test_Data")=Environment.Value("Result")
+Next
+DataTable.ExportSheet"C:\Users\user233\Documents\Sprint2bms\Test_data\bookmyshowdata.xlsx","Action1","Bookmyshow"
