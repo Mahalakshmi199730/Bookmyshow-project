@@ -1,0 +1,214 @@
+﻿'''TC_01........
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Function TC_01()
+Systemutil.Run "chrome.exe","https://in.bookmyshow.com/explore/home/mumbai"
+Dim input,resultString
+input="9632438487"
+Services.StartTransaction"TC_01"
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Help & SupportView commonly").Click
+wait(3)
+Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").Link("New support ticket").Click
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebEdit("helpdesk_ticket[custom_field][").Set "9632438487"
+Services.EndTransaction"TC_01"
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebButton("Submit").Click
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").Check CheckPoint("Submit a ticket : BookMyShow Support Centre")
+resultString=Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebElement("html id:=helpdesk_ticket_email-error").GetROProperty("text")
+If instr(resultString)>=0 Then
+	Reporter.ReportEvent micPass,"Submit","Pass"
+	Reporter.ReportEvent micFail,"Submit","Fail"
+End If
+end function 
+wait(4)
+
+'TC_02...................
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Function TC_02()
+Systemutil.Run"chrome.exe","https://in.bookmyshow.com/explore/home/mumbai"
+Dim searchString,resultString
+searchString="How to get cash back"
+Services.StartTransaction"TC_02"
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").WebElement("Help & SupportView commonly").Click
+wait(3)
+Browser("Movie Tickets, Plays,").Page("BookMyShow Customer Care").WebEdit("term").Set "How to get cashback"
+Browser("Movie Tickets, Plays,").Page("BookMyShow Customer Care").WebButton("Search").Click
+wait(3)
+Browser("Movie Tickets, Plays,").Page("Search : BookMyShow Support").WebElement("Search results for 'how").Click
+resultString=Browser("Movie Tickets, Plays,").Page("Search : BookMyShow Support").WebElement("Search results for 'how").GetROProperty("text")
+Services.EndTransaction"TC_02"
+If instr(resultString)>=0 Then
+	Reporter.ReportEvent micPass, "Search","Pass"
+	else
+	Reporter.ReportEvent micFail, "Search","Fail"
+End If
+end function 
+wait(3)
+
+'TC_03..........................................
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Function TC_03()
+Systemutil.Run"chrome.exe","https://in.bookmyshow.com/explore/home/mumbai"
+Dim searchString,resultString
+searchString="Important Topics"
+Services.StartTransaction"TC_03"
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+wait(3)
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Help & SupportView commonly").Click
+Browser("BookMyShow Customer Care").Page("Important Topics : BookMyShow").WebElement("Important Topics").Click
+Services.EndTransaction"TC_03"
+resultString=Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").Link("Important Topics 4").GetROProperty("text")
+Browser("BookMyShow Customer Care").Page("Important Topics : BookMyShow").Check CheckPoint("Important Topics : BookMyShow Support Centre")
+If instr(resultString)>=0 Then 
+Reporter.ReportEvent micPass, "Important topics", "Pass"
+else
+Reporter.ReportEvent micFai, "Important topics", "Fail"	
+End If
+End Function
+wait(3)
+
+'TC_04.....................................
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Function TC_04()
+Systemutil.Run"chrome.exe","https://in.bookmyshow.com/explore/home/mumbai"
+Dim searchString,resultString
+Services.StartTransaction "TC_04"
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+wait(3)
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Help & SupportView commonly").Click
+searchString=Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").Link("Online Streaming 14").Click
+wait(3)
+resuktString=Browser("BookMyShow Customer Care").Page("Online Streaming : BookMyShow").WebElement("What is online streaming?").Click
+Services.EndTransaction "TC_04"
+Browser("BookMyShow Customer Care").Page("Online Streaming : BookMyShow").Check CheckPoint("Online Streaming : BookMyShow Support Centre")
+If instr(resultString)>=0 Then
+	Reporter.ReportEvent micPass, "Online Streaming","Pass"
+	Reporter.ReportEvent micFail, "Online Streaming","Fail"
+End If
+
+
+End Function
+wait(3)
+
+'TC_05.........................................................
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Function TC_05()
+Systemutil.Run"chrome.exe","https://in.bookmyshow.com/explore/home/mumbai"
+Dim input,resultString
+input="abcdef"
+Services.StartTransaction"TC_05"
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").Image("helpandsupport").Click
+Browser("Movie Tickets, Plays,").Page("BookMyShow Customer Care").Link("New support ticket").Click
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebEdit("helpdesk_ticket[email]").Set "test@gmail.com"
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebButton("Submit").Click
+wait(3)
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebButton("Submit_2").Click
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebButton("Submit_2").Click
+wait(3)
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebEdit("helpdesk_ticket[name]").Set "test12"
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebEdit("helpdesk_ticket[custom_field][").Set "abcdef"
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebEdit("helpdesk_ticket[subject]").Set "offers"
+wait(3)
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebList("helpdesk_ticket[custom_field][").Select "Offers"
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebEdit("how many offers can have").Set "how many offers can have" + vbLf + ""'
+'Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").Frame("a-wabo04rhte2b").WebCheckBox("I'm not a robot").Set "ON"
+resultString=Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").WebButton("Submit_2").Click
+Services.EndTransaction"TC_05"
+If (resultString)>=0 Then
+	Reporter.ReportEvent micPass,"Submit a ticket : BookMyShow","Pass"
+	else
+	Reporter.ReportEvent micPass,"Submit a ticket : BookMyShow","Fail"
+End If
+End function 
+wait(3)
+
+'TC_06........................................................
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Function TC_06()
+Systemutil.Run"chrome.exe","https://in.bookmyshow.com/explore/home/mumbai"
+Dim input,resultString
+Email="!@#$%^&*@gmail.com"
+contactnumber="abcd!@#$%^&"
+Services.StartTransaction"TC_06"
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("BookMyShow Customer Care").Page("Movie Tickets, Plays,").WebElement("Help & Support").Click
+Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").WebElement("Most of your booking &").Click
+Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").WebElement("BookMyShow Support Centre").Click
+Browser("BookMyShow Customer Care").Page("BookMyShow Customer Care").Link("New support ticket").Click
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebEdit("helpdesk_ticket[email]").Set "!@#$%^&*@gmail.com"
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebEdit("helpdesk_ticket[name]").Set "test"
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebEdit("helpdesk_ticket[custom_field][").Set "abcd!@#$%^&"
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebEdit("helpdesk_ticket[subject]").Set "Booking theatre ticket"
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebList("helpdesk_ticket[custom_field][").Select "Confirmation not received"
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebEdit("Not yet received confirmation").Set "Not yet received confirmation " + vbLf + ""
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebButton("Submit").Click
+resultString=Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").WebElement("error").Click
+Browser("BookMyShow Customer Care").Page("Submit a ticket : BookMyShow").Check CheckPoint("Submit a ticket : BookMyShow Support Centre")
+Services.EndTransaction"TC_06"
+if(resultString)>=0 Then
+	Reporter.ReportEvent micPass, "Submit a ticket : BookMyShow","Pass"
+	else
+	Reporter.ReportEvent micPass, "Submit a ticket : BookMyShow","Fail"
+End If
+end function 
+
+
+'TC_07............................................
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Function TC_07
+Systemutil.Run"chrome.exe","https://in.bookmyshow.com/explore/home/mumbai"
+Dim searchString,resultString
+searchString="Confirmation : BookMyShow Support Centre"
+Services.StartTransaction "TC_07"
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").WebElement("Hamburger Menu").Click
+Browser("Movie Tickets, Plays,").Page("Movie Tickets, Plays,").WebElement("Help & SupportView commonly_2").Click
+wait(3)
+Browser("Movie Tickets, Plays,").Page("BookMyShow Customer Care").Link("New support ticket").Click
+Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").Link("Solutions").Click
+wait(3)
+Browser("Movie Tickets, Plays,").Page("Solutions : BookMyShow").Link("Payment & Refund 5").Click
+Browser("Movie Tickets, Plays,").Page("Payment & Refund : BookMyShow").Check CheckPoint("Payment & Refund : BookMyShow Support Centre")
+Browser("Movie Tickets, Plays,").Page("Payment & Refund : BookMyShow").Link("Solutions").Click
+wait(3)
+Browser("Movie Tickets, Plays,").Page("Solutions : BookMyShow").Link("Confirmation 2").Click
+Browser("Movie Tickets, Plays,").Page("Confirmation : BookMyShow").Check CheckPoint("Confirmation : BookMyShow Support Centre")
+Services.EndTransaction"TC_07"
+resultString=Browser("Movie Tickets, Plays,").Page("Confirmation : BookMyShow").Link("Solutions").Click
+If (resultString)>=0 Then
+	Reporter.ReportEvent micPass,"Confirmation : BookMyShow","pass"
+	else
+	Reporter.ReportEvent micPass,"Confirmation : BookMyShow","fail"
+End If
+end function 
+wait(3)
+
+'TC_08.........................................................
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Function TC_08
+Systemutil.Run"chrome.exe","https://in.bookmyshow.com/explore/home/mumbai"
+Dim searchString,submitString
+Browser("Movie Tickets, Plays,").Sync
+Browser("Movie Tickets, Plays,").Page("BookMyShow Customer Care").Sync
+searchString=Browser("creationtime:=0").page("micclass:=page").Link("class:=mobile-icon-nav-newticket new-ticket ellipsis").Click
+Services.StartTransaction "TC_08"
+Browser("creationtime:=0").page("micclass:=page").WebEdit("class:=span12 email required").Set "mlakshmibl1997@gmail.com"
+Browser("creationtime:=0").page("micclass:=page").WebEdit("class:=text span12 name_field").Set "Mahalakshmi"
+wait(3)
+Browser("creationtime:=0").page("micclass:=page").WebEdit("html id:=helpdesk_ticket_custom_field_contact_number_79003").Set "9632438487"
+Browser("creationtime:=0").page("micclass:=page").WebEdit("html id:=helpdesk_ticket_subject").Set "PVR booking"
+wait(3)
+Browser("creationtime:=0").page("micclass:=page").WebList("class:= required dropdown_blank dynamic_sections").Select 7
+Browser("creationtime:=0").page("micclass:=page").WebEdit("class:=redactor_editor").Set  "How to cancel" + vbLf + ""
+Browser("creationtime:=0").page("micclass:=page").WebCheckBox("acc_name:=I'm not a robot").Set "ON"
+Services.EndTransaction "TC_08"
+submitString=Browser("Movie Tickets, Plays,").Page("Submit a ticket : BookMyShow").Sync
+If Instr(submitString)>=0 Then
+	Reporeter.ReportEvent micPass, "New support ticket", "Pass"
+	else
+	Reporter.ReportEvent micFail, "New support ticket", "Fail"
+End If
+end function 
+
+
+
